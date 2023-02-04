@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>菜鸟教程(runoob.com)</title>
+<title>zzl个人主页(1225297600.github.io)</title>
 </head>
 <body>
 	<a href="https://github.com/1225297600/1225297600.github.com/edit/main/index.md">编辑此页</a>
