@@ -1,73 +1,239 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<title>zzl主页(1225297600.github.io)</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZZL个人主页 - 嵌入式开发与开源项目</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #4CAF50, #2196F3, #9C27B0);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        h1 a {
+            color: #2c3e50;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        h1 a:hover {
+            color: #3498db;
+        }
+        
+        .contact {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+        
+        h2 {
+            color: #3498db;
+            margin: 25px 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #eaeaea;
+            font-size: 1.8rem;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .link-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            transition: all 0.3s ease;
+            border-left: 4px solid #3498db;
+        }
+        
+        .link-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #2ecc71;
+        }
+        
+        .link-card a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .link-card a:hover {
+            color: #3498db;
+        }
+        
+        .link-description {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #ddd, transparent);
+            margin: 25px 0;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .link-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-	
-<div>
-	<h1><a href="https://github.com/1225297600" target="_blank">ZZL个人主页 1225297600@qq.com<br></a></h1>
-	<hr>
-	<hr>
-	
-	<h2><a>软件<br></a></h2>
-	<a href="https://github.com/1225297600/kv_json" target="_blank">Json简易键值对解析器<br></a>
-	<a href="https://github.com/1225297600/mini-DHCP" target="_blank">mini-DHCP：DHCP简易驱动<br></a>
-	<a href="https://github.com/1225297600/lattice-GUI" target="_blank">lattice-GUI：点阵GUI接口系统（包含一个基于此接口的OLED096驱动）<br></a>
-	<a href="https://github.com/1225297600/SPI-SD/tree/main" target="_blank">SPI-SD：SPI接口的SD卡驱动程序<br></a>
-	<hr>
-	<hr>
-
-	
-
-	
-	<h2><a>工程<br></a></h2>
-	<a href="https://oshwhub.com/zzl122/licheepi-nano-board" target="_blank">荔枝派Nano的简单转接板<br></a>
-	<a href="https://oshwhub.com/zzl122/mp3-1" target="_blank">基于STM32G0的MP3<br></a>
-	<a href="https://oshwhub.com/zzl122/usb-hub" target="_blank">USB扩展器<br></a>
-	<hr>
-	<hr>
-	
-	<h2><a>文章<br></a></h2>
-	
-	<a href="https://blog.csdn.net/zhangsanpang/article/details/147145478?fromshare=blogdetail&sharetype=blogdetail&sharerId=147145478&sharerefer=PC&sharesource=zhangsanpang&sharefrom=from_link" 
-		target="_blank">嵌入式杂谈-内部和外部RTC，亚秒计数器会自动清0吗？<br></a>
-	<a href="https://blog.csdn.net/zhangsanpang/article/details/147528819?fromshare=blogdetail&sharetype=blogdetail&sharerId=147528819&sharerefer=PC&sharesource=zhangsanpang&sharefrom=from_link" 
-		target="_blank">嵌入式杂谈：如何使用GPS，在单片机内部，生成高精度（10us级别）时间？<br></a>
-	<a href="https://blog.csdn.net/zhangsanpang/article/details/147323930?fromshare=blogdetail&sharetype=blogdetail&sharerId=147323930&sharerefer=PC&sharesource=zhangsanpang&sharefrom=from_link" 
-		target="_blank">嵌入式杂谈-添加1个头文件，快速实现彩色printf（附代码）<br></a>
-	<a href="https://blog.csdn.net/zhangsanpang/article/details/145744759?fromshare=blogdetail&sharetype=blogdetail&sharerId=145744759&sharerefer=PC&sharesource=zhangsanpang&sharefrom=from_link" 
-		target="_blank">问题记录：Filezilla传输多个大文件时，将控制命令“226 Transfer complete.”，写入文件的情况<br></a>
-	<a href="https://blog.csdn.net/zhangsanpang/article/details/147113306?fromshare=blogdetail&sharetype=blogdetail&sharerId=147113306&sharerefer=PC&sharesource=&sharefrom=from_link" 
-		target="_blank">STM32-十二行代码，实现DMA+SPI从机+不定长，接收数据<br></a>
-	
-	<a href="https://blog.csdn.net/zhangsanpang/article/details/143480815?fromshare=blogdetail&sharetype=blogdetail&sharerId=143480815&sharerefer=PC&sharesource=zhangsanpang&sharefrom=from_link" 
-		target="_blank">ZYNQ-工程创建和PS开发步骤<br></a>
-	<a href="https://blog.csdn.net/zhangsanpang/article/details/147112291?fromshare=blogdetail&sharetype=blogdetail&sharerId=147112291&sharerefer=PC&sharesource=zhangsanpang&sharefrom=from_link" 
-		target="_blank">ZYNQ裸机-使用AXI QSPI读写超过16MiB的Flash，存在的问题<br></a>
-	<a href="https://blog.csdn.net/zhangsanpang/article/details/143480520?fromshare=blogdetail&sharetype=blogdetail&sharerId=143480520&sharerefer=PC&sharesource=zhangsanpang&sharefrom=from_link" 
-		target="_blank">ZYNQ-裸机问题汇总<br></a>
-	
-	<a href="https://blog.csdn.net/zhangsanpang/article/details/143530468?fromshare=blogdetail&sharetype=blogdetail&sharerId=143530468&sharerefer=PC&sharesource=zhangsanpang&sharefrom=from_link" 
-		target="_blank">ZYNQ-Petalinux环境的安装<br></a>
-	<a href="https://blog.csdn.net/zhangsanpang/article/details/143530468?fromshare=blogdetail&sharetype=blogdetail&sharerId=143530468&sharerefer=PC&sharesource=zhangsanpang&sharefrom=from_link" 
-		target="_blank">ZYNQ-Ubuntu18.04环境安装<br></a>
-	
-	<a href="https://blog.csdn.net/zhangsanpang/article/details/132102757?spm=1001.2014.3001.5502" target="_blank">DHCP报文分析<br></a>
-	<a href="https://oshwhub.com/article/zhi-zuo-yun-xing-zai-f1c100s-ji-yu-licheepi-de-linuxji-tong-de-da-zhi-liu-cheng" target="_blank">制作运行在f1c100s（基于licheepi）的linux系统的大致流程<br></a>
-	<a href="https://oshwhub.com/article/STM32ge-ge-xing-hao-de-uiddi-zhi-du-qu-fang-fa-he-sheng-cheng-MACde-han-shuo" target="_blank">STM32各个型号的uid地址、读取方法和生成MAC的函数<br></a>
-	<a href="https://oshwhub.com/article/ru-he-shi-yong-KEIL5bian-yi-C51dai-ma" target="_blank">如何使用KEIL5编译C51代码<br></a>
-	<a href="https://oshwhub.com/article/wang-shang-wu-zhuan-de-ST7735jian-rong-ILI9341qu-dong-de-kan-wu" target="_blank">网上误传的ST7735兼容ILI9341驱动的勘误<br></a>
-	<a href="https://oshwhub.com/article/KEIL5chu-xian-namespace-is-undefined" target="_blank">KEIL5出现 "namespace" is undefined<br></a>
-	<hr>
-	<hr>
-	
-	<h2><a href="https://github.com/1225297600/1225297600.github.com/blob/main/index.html/" target="_blank">编辑<br></a></h2>
-</div>
-	
+    <div class="container">
+        <header>
+            <h1><a href="https://github.com/1225297600" target="_blank">ZZL个人主页</a></h1>
+            <div class="contact">1225297600@qq.com</div>
+        </header>
+        
+        <div class="section">
+            <h2>软件项目</h2>
+            <div class="link-grid">
+                <div class="link-card">
+                    <a href="https://github.com/1225297600/kv_json" target="_blank">Json简易键值对解析器</a>
+                    <div class="link-description">轻量级JSON解析器，专注于键值对操作</div>
+                </div>
+                <div class="link-card">
+                    <a href="https://github.com/1225297600/mini-DHCP" target="_blank">mini-DHCP：DHCP简易驱动</a>
+                    <div class="link-description">简化版的DHCP客户端实现，适用于嵌入式系统</div>
+                </div>
+                <div class="link-card">
+                    <a href="https://github.com/1225297600/lattice-GUI" target="_blank">lattice-GUI：点阵GUI接口系统</a>
+                    <div class="link-description">包含基于此接口的OLED096驱动，适用于嵌入式显示</div>
+                </div>
+                <div class="link-card">
+                    <a href="https://github.com/1225297600/SPI-SD/tree/main" target="_blank">SPI-SD：SPI接口的SD卡驱动程序</a>
+                    <div class="link-description">SPI协议SD卡驱动，支持FAT文件系统</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="section">
+            <h2>硬件工程</h2>
+            <div class="link-grid">
+                <div class="link-card">
+                    <a href="https://oshwhub.com/zzl122/licheepi-nano-board" target="_blank">荔枝派Nano的简单转接板</a>
+                    <div class="link-description">为荔枝派Nano设计的扩展板，提供更多接口</div>
+                </div>
+                <div class="link-card">
+                    <a href="https://oshwhub.com/zzl122/mp3-1" target="_blank">基于STM32G0的MP3播放器</a>
+                    <div class="link-description">使用STM32G0微控制器实现的MP3解码播放器</div>
+                </div>
+                <div class="link-card">
+                    <a href="https://oshwhub.com/zzl122/usb-hub" target="_blank">USB扩展器</a>
+                    <div class="link-description">自定义USB HUB设计，支持多设备连接</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="section">
+            <h2>技术文章</h2>
+            <div class="link-grid">
+                <div class="link-card">
+                    <a href="https://blog.csdn.net/zhangsanpang/article/details/147145478" target="_blank">嵌入式杂谈-内部和外部RTC</a>
+                    <div class="link-description">探讨内部和外部RTC中亚秒计数器的行为</div>
+                </div>
+                <div class="link-card">
+                    <a href="https://blog.csdn.net/zhangsanpang/article/details/147528819" target="_blank">如何使用GPS在单片机内部生成高精度时间</a>
+                    <div class="link-description">实现10us级别精度的时间生成方案</div>
+                </div>
+                <div class="link-card">
+                    <a href="https://blog.csdn.net/zhangsanpang/article/details/147323930" target="_blank">嵌入式杂谈-添加头文件实现彩色printf</a>
+                    <div class="link-description">简单方法实现终端彩色输出调试信息</div>
+                </div>
+                <div class="link-card">
+                    <a href="https://blog.csdn.net/zhangsanpang/article/details/145744759" target="_blank">Filezilla传输大文件问题记录</a>
+                    <div class="link-description">解决226 Transfer complete命令写入文件的问题</div>
+                </div>
+                <div class="link-card">
+                    <a href="https://blog.csdn.net/zhangsanpang/article/details/147113306" target="_blank">STM32-DMA+SPI从机不定长接收数据</a>
+                    <div class="link-description">仅用十二行代码实现高效数据接收</div>
+                </div>
+                <div class="link-card">
+                    <a href="https://blog.csdn.net/zhangsanpang/article/details/143480815" target="_blank">ZYNQ-工程创建和PS开发步骤</a>
+                    <div class="link-description">ZYNQ开发入门指南，从工程创建到PS端开发</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <footer>
+            <p>© 2023 ZZL个人主页 | <a href="https://github.com/1225297600/1225297600.github.com/blob/main/index.html/" target="_blank">编辑此页</a></p>
+        </footer>
+    </div>
 </body>
 </html>
-
-
-
