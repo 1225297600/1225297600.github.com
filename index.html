@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZZL个人主页 - 技术文章合集</title>
+    <title>ZZL个人主页</title>
     <style>
-        /* 原有的CSS样式保持不变 */
+        /* ===== 全局重置 & 基础 ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
             background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
             color: #333;
@@ -20,7 +20,7 @@
             padding: 20px;
             min-height: 100vh;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -31,7 +31,8 @@
             position: relative;
             overflow: hidden;
         }
-        
+
+        /* 顶部装饰条 */
         .container::before {
             content: "";
             position: absolute;
@@ -41,527 +42,529 @@
             height: 5px;
             background: linear-gradient(90deg, #4CAF50, #2196F3, #9C27B0);
         }
-        
+
+        /* ===== Header ===== */
         header {
             text-align: center;
             margin-bottom: 30px;
             padding-bottom: 20px;
             border-bottom: 1px solid #eaeaea;
         }
-        
+
         h1 {
             color: #2c3e50;
             font-size: 2.5rem;
             margin-bottom: 10px;
         }
-        
+
         h1 a {
             color: #2c3e50;
             text-decoration: none;
             transition: color 0.3s;
         }
-        
+
         h1 a:hover {
             color: #3498db;
         }
-        
+
         .contact {
             color: #7f8c8d;
             font-size: 1.1rem;
             margin-top: 5px;
         }
-        
-        h2 {
-            color: #3498db;
-            margin: 25px 0 15px 0;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #eaeaea;
-            font-size: 1.8rem;
-        }
-        
+
+        /* ===== 板块标题 ===== */
         .section {
             margin-bottom: 30px;
         }
-        
+
+        .section-title {
+            color: #3498db;
+            margin: 0 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #eaeaea;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title .badge {
+            font-size: 0.8rem;
+            background: #3498db;
+            color: #fff;
+            padding: 2px 12px;
+            border-radius: 12px;
+            font-weight: 400;
+        }
+
+        /* ===== 导航卡片（前三个板块） ===== */
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .nav-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 28px 24px;
+            transition: all 0.3s ease;
+            border-left: 6px solid #3498db;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            min-height: 130px;
+            justify-content: center;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .nav-card .nav-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 6px;
+        }
+
+        .nav-card .nav-desc {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+        }
+
+        .nav-card .nav-arrow {
+            font-size: 1.2rem;
+            color: #bdc3c7;
+            transition: transform 0.3s, color 0.3s;
+            margin-top: 8px;
+        }
+
+        .nav-card:hover .nav-arrow {
+            transform: translateX(6px);
+            color: #3498db;
+        }
+
+        /* 各板块专属颜色 */
+        .nav-card.hardware {
+            border-left-color: #2ecc71;
+        }
+        .nav-card.hardware:hover {
+            border-left-color: #27ae60;
+        }
+        .nav-card.hardware .nav-arrow {
+            color: #2ecc71;
+        }
+
+        .nav-card.code {
+            border-left-color: #3498db;
+        }
+        .nav-card.code:hover {
+            border-left-color: #2980b9;
+        }
+        .nav-card.code .nav-arrow {
+            color: #3498db;
+        }
+
+        .nav-card.articles {
+            border-left-color: #9b59b6;
+        }
+        .nav-card.articles:hover {
+            border-left-color: #8e44ad;
+        }
+        .nav-card.articles .nav-arrow {
+            color: #9b59b6;
+        }
+
+        /* ===== 工具板块 ===== */
         .filter-controls {
             display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: 12px;
+            margin-bottom: 18px;
             flex-wrap: wrap;
         }
-        
+
         .filter-controls button {
-            padding: 8px 16px;
+            padding: 6px 18px;
             background: #f1f1f1;
             border: none;
             border-radius: 20px;
             cursor: pointer;
             transition: all 0.3s;
+            font-size: 0.9rem;
         }
-        
+
         .filter-controls button:hover {
             background: #3498db;
             color: white;
         }
-        
+
         .filter-controls button.active {
             background: #3498db;
             color: white;
         }
-        
+
         .search-box {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
-        
+
         .search-box input {
             width: 100%;
             padding: 10px 15px;
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 1rem;
+            transition: border-color 0.3s;
         }
-        
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
+        }
+
         .link-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 18px;
         }
-        
+
         .link-card {
             background: #f8f9fa;
             border-radius: 8px;
-            padding: 20px;
+            padding: 18px 20px 16px;
             transition: all 0.3s ease;
-            border-left: 4px solid #3498db;
+            border-left: 4px solid #e67e22;
             height: 100%;
             display: flex;
             flex-direction: column;
         }
-        
+
         .link-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            border-left: 4px solid #2ecc71;
+            transform: translateY(-4px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            border-left-color: #d35400;
         }
-        
+
         .link-card a {
             color: #2c3e50;
             text-decoration: none;
             font-weight: 500;
             display: block;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
+            margin-bottom: 6px;
+            font-size: 1.05rem;
         }
-        
+
         .link-card a:hover {
             color: #3498db;
         }
-        
+
         .link-description {
             color: #7f8c8d;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             flex-grow: 1;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
-        
+
         .link-meta {
             display: flex;
             justify-content: space-between;
             color: #95a5a6;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             border-top: 1px solid #eee;
-            padding-top: 10px;
+            padding-top: 8px;
             margin-top: auto;
         }
-        
+
+        .link-card .tool-tag {
+            background: #e67e22;
+            color: #fff;
+            font-size: 0.7rem;
+            padding: 1px 10px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 4px;
+        }
+
+        /* ===== 通用 ===== */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #ddd, transparent);
+            margin: 28px 0;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
         .loading {
             text-align: center;
             padding: 20px;
             color: #7f8c8d;
         }
-        
+
         .error-message {
             color: #e74c3c;
             text-align: center;
             padding: 20px;
         }
-        
-        .divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #ddd, transparent);
-            margin: 25px 0;
-        }
-        
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            color: #7f8c8d;
-            font-size: 0.9rem;
-        }
-        
-        .tool-highlight {
-            border-left: 4px solid #FF9800;
-        }
-        
-        .tool-highlight:hover {
-            border-left: 4px solid #FF5722;
-        }
-        
+
+        /* ===== 响应式 ===== */
         @media (max-width: 768px) {
             .container {
-                padding: 20px;
+                padding: 18px;
             }
-            
+
             h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
-            
+
+            .nav-grid {
+                grid-template-columns: 1fr;
+            }
+
             .link-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .filter-controls {
-                flex-direction: column;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 14px;
+            }
+            .nav-card {
+                padding: 20px 18px;
+                min-height: 100px;
+            }
+            .nav-card .nav-title {
+                font-size: 1.2rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
+
+        <!-- ===== HEADER ===== -->
         <header>
             <h1><a href="https://github.com/1225297600" target="_blank">ZZL个人主页</a></h1>
             <div class="contact">1225297600@qq.com</div>
         </header>
-        
-        <!-- 软件项目板块 -->
+
+        <!-- ===== 1. 硬件工程 ===== -->
         <div class="section">
-            <h2>软件项目</h2>
-            <div class="link-grid">
-                <div class="link-card">
-                    <a href="https://github.com/1225297600/petalinux2018.3-QSPI-FLASH-over-16MiB-patch-spi-nor.c-" target="_blank">ZYNQ-QSPI-FLASH使用超过16MiB型号的补丁</a>
-                    <div class="link-description">是一个spi-nor.c文件，替换petalinux原有即可</div>
-                </div>
-                <div class="link-card">
-                    <a href="https://github.com/1225297600/ZYNQ-Driver-Over-16MiB-Flash-bare-metal-code-" target="_blank">ZYNQ-AXI-SPI驱动W25Q256（32M Flash）</a>
-                    <div class="link-description">ZYNQ-AXI-SPI驱动和W25Q256驱动，基于四线SPI</div>
-                </div>
-                <div class="link-card">
-                    <a href="https://github.com/1225297600/kv_json" target="_blank">Json简易键值对解析器</a>
-                    <div class="link-description">轻量级JSON解析器，专注于键值对操作</div>
-                </div>
-                <div class="link-card">
-                    <a href="https://github.com/1225297600/mini-DHCP" target="_blank">mini-DHCP：DHCP简易驱动</a>
-                    <div class="link-description">简化版的DHCP客户端实现，适用于嵌入式系统</div>
-                </div>
-                <div class="link-card">
-                    <a href="https://github.com/1225297600/lattice-GUI" target="_blank">lattice-GUI：点阵GUI接口系统</a>
-                    <div class="link-description">包含基于此接口的OLED096驱动，适用于嵌入式显示</div>
-                </div>
-                <div class="link-card">
-                    <a href="https://github.com/1225297600/SPI-SD/tree/main" target="_blank">SPI-SD：SPI接口的SD卡驱动程序</a>
-                    <div class="link-description">SPI协议SD卡驱动，支持FAT文件系统</div>
-                </div>
+            <h2 class="section-title">硬件工程</h2>
+            <div class="nav-grid">
+                <a href="https://oshwhub.com/zzl122/works" target="_blank" class="nav-card hardware">
+                    <div class="nav-title">🧩 开源硬件工程</div>
+                    <div class="nav-desc">查看我所有的硬件设计作品</div>
+                    <div class="nav-arrow">→ 前往 OSHWHub</div>
+                </a>
             </div>
         </div>
-        
+
         <div class="divider"></div>
-        
-        <!-- 工具板块 -->
+
+        <!-- ===== 2. 代码 ===== -->
         <div class="section">
-            <h2>工具</h2>
-            <div class="link-grid">
-                <div class="link-card tool-highlight">
-                    <a href="https://1225297600.github.io/tool_csv_num2head.html" target="_blank">CSV数字转表头工具</a>
-                    <div class="link-description">将CSV文件的数字列索引转换为Excel风格的字母表头</div>
-                </div>
-                <div class="link-card tool-highlight">
-                    <a href="https://modbuskit.com/zh/modbus-rtu" target="_blank">Modbus工具</a>
-                    <div class="link-description">报文组包、校验和解包工具</div>
-                </div>
-                <div class="link-card tool-highlight">
-                    <a href="https://tool.chinaz.com/tools/unixtime.aspx" target="_blank">UNIX时间戳和时间相互转换工具</a>
-                    <div class="link-description">及各种种编程语言，UNIX时间的转换方法</div>
-                </div>
-                <div class="link-card tool-highlight">
-                    <a href="https://www.asciim.cn/hex/float.html" target="_blank">IEEE754浮点数和十六进制转换工具</a>
-                    <div class="link-description"></div>
-                </div>
-                <div class="link-card tool-highlight">
-                    <a href="https://charactercalculator.com/zh-cn/" target="_blank">字符计数工具</a>
-                    <div class="link-description"></div>
-                </div>
-                <div class="link-card tool-highlight">
-                    <a href="https://www.bejson.com/jsonviewernew/" target="_blank">JSON在线查看工具</a>
-                    <div class="link-description">格式化、加转义符、去除转义符、查看结构树</div>
-                </div>
-                <div class="link-card tool-highlight">
-                    <a href="https://www.json.cn/jsonedit/" target="_blank">JSON编辑工具</a>
-                    <div class="link-description">以对象的方式编辑，可以文本与对象，相互转换</div>
-                </div>
+            <h2 class="section-title">代码</h2>
+            <div class="nav-grid">
+                <a href="https://github.com/1225297600" target="_blank" class="nav-card code">
+                    <div class="nav-title">💻 开源代码仓库</div>
+                    <div class="nav-desc">嵌入式驱动、工具库、项目源码</div>
+                    <div class="nav-arrow">→ 前往 GitHub</div>
+                </a>
             </div>
         </div>
-        
+
         <div class="divider"></div>
-        
-        <!-- 硬件工程板块 -->
+
+        <!-- ===== 3. 文章 ===== -->
         <div class="section">
-            <h2>硬件工程</h2>
-            <div class="link-grid">
-                <div class="link-card">
-                    <a href="https://oshwhub.com/zzl122/licheepi-nano-board" target="_blank">荔枝派Nano的简单转接板</a>
-                    <div class="link-description">为荔枝派Nano设计的扩展板，提供更多接口</div>
-                </div>
-                <div class="link-card">
-                    <a href="https://oshwhub.com/zzl122/mp3-1" target="_blank">基于STM32G0的MP3播放器</a>
-                    <div class="link-description">使用STM32G0微控制器实现的MP3解码播放器</div>
-                </div>
-                <div class="link-card">
-                    <a href="https://oshwhub.com/zzl122/usb-hub" target="_blank">USB扩展器</a>
-                    <div class="link-description">自定义USB HUB设计，支持多设备连接</div>
-                </div>
+            <h2 class="section-title">文章</h2>
+            <div class="nav-grid">
+                <a href="https://blog.csdn.net/zhangsanpang?type=blog" target="_blank" class="nav-card articles">
+                    <div class="nav-title">📝 技术博客</div>
+                    <div class="nav-desc">嵌入式、ZYNQ、STM32 实战经验</div>
+                    <div class="nav-arrow">→ 前往 CSDN</div>
+                </a>
             </div>
         </div>
-        
+
         <div class="divider"></div>
-        
-        <!-- 技术文章板块（已移至最后） -->
+
+        <!-- ===== 4. 工具（保留完整） ===== -->
         <div class="section">
-            <h2>技术文章</h2>
-            
+            <h2 class="section-title">工具 <span class="badge">实用小工具</span></h2>
+
+            <!-- 筛选 & 搜索 -->
             <div class="filter-controls">
                 <button class="filter-btn active" data-filter="all">全部</button>
-                <button class="filter-btn" data-filter="嵌入式">嵌入式</button>
-                <button class="filter-btn" data-filter="ZYNQ">ZYNQ</button>
-                <button class="filter-btn" data-filter="STM32">STM32</button>
-                <button class="filter-btn" data-filter="问题排查">问题排查</button>
+                <button class="filter-btn" data-filter="编程">编程</button>
+                <button class="filter-btn" data-filter="转换">转换</button>
+                <button class="filter-btn" data-filter="网络">网络</button>
+                <button class="filter-btn" data-filter="其他">其他</button>
             </div>
-            
+
             <div class="search-box">
-                <input type="text" id="article-search" placeholder="搜索文章...">
+                <input type="text" id="tool-search" placeholder="搜索工具...">
             </div>
-            
-            <div class="link-grid" id="articles-container">
-                <!-- 文章内容将通过JavaScript动态加载 -->
-                <div class="loading">正在加载文章，请稍候...</div>
+
+            <div class="link-grid" id="tools-container">
+                <!-- 由 JS 动态渲染 -->
+                <div class="loading">加载工具中...</div>
             </div>
         </div>
-        
+
         <div class="divider"></div>
-        
+
+        <!-- ===== FOOTER ===== -->
         <footer>
-            <p>© 2023 ZZL个人主页 | <a href="https://github.com/1225297600/1225297600.github.com/blob/main/index.html/" target="_blank">编辑此页</a></p>
+            <p>© 2023 ZZL个人主页 · <a href="https://github.com/1225297600/1225297600.github.com/blob/main/index.html/" target="_blank">编辑此页</a></p>
         </footer>
+
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const articlesContainer = document.getElementById('articles-container');
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const searchInput = document.getElementById('article-search');
-            let allArticles = [];
-            
-            // 从CSDN获取文章数据
-            async function fetchArticles() {
-                try {
-                    articlesContainer.innerHTML = '<div class="loading">正在加载文章，请稍候...</div>';
-                    
-                    // 尝试从CSDN获取真实数据
-                    // 注意：由于浏览器同源策略限制，直接请求CSDN API可能会遇到跨域问题
-                    // 这里使用尝试获取的方式，如果失败则回退到模拟数据
-                    try {
-                        // 尝试使用CSDN提供的API或个人空间接口
-                        // 注意：CSDN可能没有公开的API，这里只是示例尝试
-                        const response = await fetch('https://blog.csdn.net/community/api-service/blog-service/user/article?userId=1225297600', {
-                            method: 'GET',
-                            headers: {
-                                'Accept': 'application/json',
-                            },
-                            mode: 'cors' // 尝试跨域请求
-                        });
-                        
-                        if (response.ok) {
-                            const data = await response.json();
-                            // 假设返回的数据格式符合预期，将其转换为所需的文章格式
-                            if (data && data.data && data.data.list) {
-                                allArticles = data.data.list.map(item => ({
-                                    title: item.title,
-                                    url: item.url || `https://blog.csdn.net/zhangsanpang/article/details/${item.articleId}`,
-                                    description: item.description || '暂无描述',
-                                    category: item.category || '未知分类',
-                                    date: item.postTime || '未知日期',
-                                    readCount: item.viewCount || 0
-                                }));
-                                displayArticles(allArticles);
-                                return;
-                            }
-                        }
-                    } catch (error) {
-                        console.log('CSDN API请求失败，使用模拟数据:', error);
+
+            // ============================================================
+            //  工具数据
+            // ============================================================
+            const toolsData = [{
+                title: "CSV数字转表头工具",
+                url: "https://1225297600.github.io/tool_csv_num2head.html",
+                desc: "将CSV文件的数字列索引转换为Excel风格的字母表头",
+                category: "编程"
+            }, {
+                title: "Modbus工具",
+                url: "https://modbuskit.com/zh/modbus-rtu",
+                desc: "报文组包、校验和解包工具",
+                category: "网络"
+            }, {
+                title: "UNIX时间戳转换",
+                url: "https://tool.chinaz.com/tools/unixtime.aspx",
+                desc: "UNIX时间戳与日期时间相互转换，支持多种编程语言",
+                category: "转换"
+            }, {
+                title: "IEEE754浮点数转换",
+                url: "https://www.asciim.cn/hex/float.html",
+                desc: "IEEE754浮点数与十六进制相互转换",
+                category: "转换"
+            }, {
+                title: "字符计数工具",
+                url: "https://charactercalculator.com/zh-cn/",
+                desc: "统计字符数、字数、段落数等",
+                category: "其他"
+            }, {
+                title: "JSON在线查看器",
+                url: "https://www.bejson.com/jsonviewernew/",
+                desc: "格式化、加转义符、去除转义符、查看结构树",
+                category: "编程"
+            }, {
+                title: "JSON编辑工具",
+                url: "https://www.json.cn/jsonedit/",
+                desc: "以对象方式编辑，文本与对象相互转换",
+                category: "编程"
+            }];
+
+            // ============================================================
+            //  渲染工具
+            // ============================================================
+            const container = document.getElementById('tools-container');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const searchInput = document.getElementById('tool-search');
+
+            let currentFilter = 'all';
+            let currentKeyword = '';
+
+            function renderTools() {
+                const filtered = toolsData.filter(tool => {
+                    // 分类筛选
+                    if (currentFilter !== 'all' && tool.category !== currentFilter) return false;
+                    // 关键词搜索
+                    if (currentKeyword) {
+                        const kw = currentKeyword.toLowerCase();
+                        const match = tool.title.toLowerCase().includes(kw) ||
+                            tool.desc.toLowerCase().includes(kw) ||
+                            tool.category.toLowerCase().includes(kw);
+                        if (!match) return false;
                     }
-                    
-                    // 如果CSDN API请求失败，使用模拟数据作为后备方案
-                    const mockArticles = [
-                        {
-                            title: "嵌入式杂谈-内部和外部RTC，亚秒计数器会自动清0吗？",
-                            url: "https://blog.csdn.net/zhangsanpang/article/details/147145478",
-                            description: "探讨内部和外部RTC中亚秒计数器的行为",
-                            category: "嵌入式",
-                            date: "2023-05-20",
-                            readCount: 1280
-                        },
-                        {
-                            title: "嵌入式杂谈：如何使用GPS，在单片机内部，生成高精度（10us级别）时间？",
-                            url: "https://blog.csdn.net/zhangsanpang/article/details/147528819",
-                            description: "实现10us级别精度的时间生成方案",
-                            category: "嵌入式",
-                            date: "2023-06-15",
-                            readCount: 2150
-                        },
-                        {
-                            title: "嵌入式杂谈-添加1个头文件，快速实现彩色printf（附代码）",
-                            url: "https://blog.csdn.net/zhangsanpang/article/details/147323930",
-                            description: "简单方法实现终端彩色输出调试信息",
-                            category: "嵌入式",
-                            date: "2023-06-02",
-                            readCount: 3450
-                        },
-                        {
-                            title: "问题记录：Filezilla传输多个大文件时，将控制命令写入文件的情况",
-                            url: "https://blog.csdn.net/zhangsanpang/article/details/145744759",
-                            description: "解决226 Transfer complete命令写入文件的问题",
-                            category: "问题排查",
-                            date: "2023-04-10",
-                            readCount: 980
-                        },
-                        {
-                            title: "STM32-十二行代码，实现DMA+SPI从机+不定长，接收数据",
-                            url: "https://blog.csdn.net/zhangsanpang/article/details/147113306",
-                            description: "仅用十二行代码实现高效数据接收",
-                            category: "STM32",
-                            date: "2023-05-28",
-                            readCount: 4320
-                        },
-                        {
-                            title: "ZYNQ-工程创建和PS开发步骤",
-                            url: "https://blog.csdn.net/zhangsanpang/article/details/143480815",
-                            description: "ZYNQ开发入门指南，从工程创建到PS端开发",
-                            category: "ZYNQ",
-                            date: "2023-02-15",
-                            readCount: 2890
-                        },
-                        {
-                            title: "ZYNQ裸机-使用AXI QSPI读写超过16MiB的Flash，存在的问题",
-                            url: "https://blog.csdn.net/zhangsanpang/article/details/147112291",
-                            description: "解决大容量Flash读写存在的问题",
-                            category: "ZYNQ",
-                            date: "2023-05-27",
-                            readCount: 1560
-                        },
-                        {
-                            title: "ZYNQ-裸机问题汇总",
-                            url: "https://blog.csdn.net/zhangsanpang/article/details/143480520",
-                            description: "ZYNQ裸机开发中常见问题及解决方案",
-                            category: "ZYNQ",
-                            date: "2023-02-14",
-                            readCount: 1980
-                        },
-                        {
-                            title: "ZYNQ-Petalinux环境的安装",
-                            url: "https://blog.csdn.net/zhangsanpang/article/details/143530468",
-                            description: "详细指导如何安装Petalinux开发环境",
-                            category: "ZYNQ",
-                            date: "2023-02-20",
-                            readCount: 1760
-                        },
-                        {
-                            title: "DHCP报文分析",
-                            url: "https://blog.csdn.net/zhangsanpang/article/details/132102757",
-                            description: "深入分析DHCP协议报文结构和交互过程",
-                            category: "网络",
-                            date: "2022-10-15",
-                            readCount: 3250
-                        }
-                    ];
-                    
-                    allArticles = mockArticles;
-                    displayArticles(allArticles);
-                    
-                } catch (error) {
-                    console.error('获取文章失败:', error);
-                    articlesContainer.innerHTML = '<div class="error-message">加载文章失败，请刷新页面重试</div>';
-                }
-            }
-            
-            // 显示文章列表
-            function displayArticles(articles) {
-                if (articles.length === 0) {
-                    articlesContainer.innerHTML = '<div class="loading">没有找到相关文章</div>';
+                    return true;
+                });
+
+                if (filtered.length === 0) {
+                    container.innerHTML = '<div class="loading">没有匹配的工具</div>';
                     return;
                 }
-                
-                articlesContainer.innerHTML = '';
-                
-                articles.forEach(article => {
-                    const articleEl = document.createElement('div');
-                    articleEl.className = 'link-card';
-                    articleEl.innerHTML = `
-                        <a href="${article.url}" target="_blank">${article.title}</a>
-                        <div class="link-description">${article.description}</div>
+
+                container.innerHTML = '';
+                filtered.forEach(tool => {
+                    const card = document.createElement('div');
+                    card.className = 'link-card';
+                    card.innerHTML = `
+                        <a href="${tool.url}" target="_blank">${tool.title}</a>
+                        <div class="link-description">${tool.desc}</div>
                         <div class="link-meta">
-                            <span>${article.category}</span>
-                            <span>${article.readCount}阅读</span>
-                            <span>${article.date}</span>
+                            <span class="tool-tag">${tool.category}</span>
                         </div>
                     `;
-                    articlesContainer.appendChild(articleEl);
+                    container.appendChild(card);
                 });
             }
-            
-            // 筛选文章
-            function filterArticles(category) {
-                if (category === 'all') {
-                    displayArticles(allArticles);
-                } else {
-                    const filtered = allArticles.filter(article => 
-                        article.category === category
-                    );
-                    displayArticles(filtered);
-                }
-            }
-            
-            // 搜索文章
-            function searchArticles(keyword) {
-                if (!keyword) {
-                    displayArticles(allArticles);
-                    return;
-                }
-                
-                const filtered = allArticles.filter(article => 
-                    article.title.toLowerCase().includes(keyword.toLowerCase()) ||
-                    article.description.toLowerCase().includes(keyword.toLowerCase()) ||
-                    article.category.toLowerCase().includes(keyword.toLowerCase())
-                );
-                
-                displayArticles(filtered);
-            }
-            
-            // 事件监听
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
+
+            // ============================================================
+            //  事件绑定
+            // ============================================================
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    filterBtns.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
-                    filterArticles(this.dataset.filter);
+                    currentFilter = this.dataset.filter;
+                    renderTools();
                 });
             });
-            
+
             searchInput.addEventListener('input', function() {
-                searchArticles(this.value);
+                currentKeyword = this.value.trim();
+                renderTools();
             });
-            
-            // 初始加载
-            fetchArticles();
+
+            // ============================================================
+            //  初始渲染
+            // ============================================================
+            renderTools();
+
         });
     </script>
+
 </body>
 </html>
